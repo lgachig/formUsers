@@ -1,0 +1,58 @@
+import { StrictMode } from 'react'
+import ReactDOM from 'react-dom/client'
+import {
+  Outlet,
+  RouterProvider,
+  createRootRoute,
+  createRoute,
+  createRouter,
+} from '@tanstack/react-router'
+import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
+
+import App from './App.jsx'
+import Cabecera from './Header/cabecera.jsx'
+import FormUser from './components/FormUser.jsx'
+
+const rootRoute = createRootRoute({
+  component: () => (
+    <>
+      <Cabecera />
+      <Outlet />
+      <TanStackRouterDevtools />
+    </>
+  ),
+})
+
+const indexRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/',
+  component: App,
+})
+
+const aboutRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/about',
+  component: FormUser,
+})
+
+const routeTree = rootRoute.addChildren([indexRoute, aboutRoute])
+
+const router = createRouter({
+  routeTree,
+  context: {},
+  defaultPreload: 'intent',
+  scrollRestoration: true,
+  defaultStructuralSharing: true,
+  defaultPreloadStaleTime: 0,
+})
+
+const rootElement = document.getElementById('app')
+if (rootElement && !rootElement.innerHTML) {
+  const root = ReactDOM.createRoot(rootElement)
+  root.render(
+    <StrictMode>
+      <RouterProvider router={router} />
+    </StrictMode>,
+  )
+}
+
