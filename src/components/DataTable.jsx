@@ -13,7 +13,7 @@ export default function DataTable({rows, setSelect}) {
 
 
   return (
-    <Paper sx={{ height: 400, width: '30%' }}>
+    <Paper sx={{ height: 400, width: '100%' }}>
       <DataGrid
         rows={rows}
         columns={columns}

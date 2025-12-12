@@ -31,6 +31,7 @@ export default function App() {
 
   return (
     <>
+
       <DataTable rows={list} setSelect={setSelect}/>
       {open && <FormUser
         register={register}

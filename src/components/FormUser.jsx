@@ -1,4 +1,4 @@
-export default function FormUser({ register, handleSubmit, errors, onSubmit, close }) {
+export default function FormUser({ register, handleSubmit, onSubmit }) {
   return (
     <div style={styles.overlay}>
       <div style={styles.modal}>
