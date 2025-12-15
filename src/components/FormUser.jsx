@@ -16,6 +16,7 @@ export default function FormUser({ register, handleSubmit, onSubmit }) {
             {...register("age")}
             placeholder="Age"
             style={styles.input}
+            type="number"
           />
 
           <div style={styles.buttons}>

@@ -1,11 +1,11 @@
 'use client';
 
-import About from "./components/FormUser";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import DataTable from "./components/DataTable";
 import { Button } from "@mui/material";
 import FormUser from "./components/FormUser";
+import InputBuscar from "./components/InputBuscar";
 
 export default function App() {
   const {register, handleSubmit, formState: { errors }, reset} = useForm();
@@ -13,6 +13,7 @@ export default function App() {
   const [list, setList] = useState([]);
   const [select,setSelect] = useState([]);
   const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState("");
 
 
   const onSubmit = (data) => {
@@ -29,10 +30,16 @@ export default function App() {
       setSelect([]);
   }
 
+  const filteredList = list.filter(item =>
+    item.Name?.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <>
+      
+      <InputBuscar value={search} onChange={setSearch} />
 
-      <DataTable rows={list} setSelect={setSelect}/>
+      <DataTable rows={filteredList} setSelect={setSelect} />
       {open && <FormUser
         register={register}
         handleSubmit={handleSubmit}
