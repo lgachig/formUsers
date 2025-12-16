@@ -1,23 +1,55 @@
-export default function FormUser({ register, handleSubmit, onSubmit }) {
+export default function FormUser({ register, handleSubmit, onSubmit, row }) {
   return (
     <div style={styles.overlay}>
       <div style={styles.modal}>
         <h2>Agregar Usuario</h2>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-
+          <img style={{
+            width: '100px',
+            height: '100px',
+            objectFit: 'cover',
+            borderRadius: '8px',
+            marginBottom: '10px',
+          }} src={row.img} alt="" />
+          
           <input 
-            {...register("Name")} 
-            placeholder="Name"
+            {...register("id")} 
+            placeholder="id"
+            value={row ? row.id : ''}
             style={styles.input}
           />
-
           <input
-            {...register("age")}
-            placeholder="Age"
+            {...register("product")} 
+            placeholder="product"
+            defaultValue={row ? row.product : ''}
             style={styles.input}
-            type="number"
+          /> 
+          <input
+            {...register("cost")} 
+            placeholder="cost"
+            defaultValue={row ? row.cost : ''}
+            style={styles.input}
           />
+          <input
+            {...register("category")} 
+            placeholder="category"
+            defaultValue={row ? row.category : ''}
+            style={styles.input}
+          />
+          <input
+            {...register("stock")} 
+            placeholder="stock"
+            defaultValue={row ? row.stock : ''}
+            style={styles.input}
+          />
+          <input
+            {...register("img")} 
+            placeholder="img"
+            value={row ? row.img : ''}
+            style={styles.input}  
+          />
+        
 
           <div style={styles.buttons}>
             <input 

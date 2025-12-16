@@ -10,13 +10,11 @@ import {
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 
 import App from './App.jsx'
-import Cabecera from './Header/cabecera.jsx'
 import FormUser from './components/FormUser.jsx'
 
 const rootRoute = createRootRoute({
   component: () => (
     <>
-      <Cabecera />
       <Outlet />
       <TanStackRouterDevtools />
     </>
